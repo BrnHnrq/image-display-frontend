@@ -1,23 +1,54 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
 
-function App() {
+import Image from './Image';
+
+const url = "http://localhost:8080/image";
+
+
+const App = () => {
+
+  const [image, setImage] = useState([]);
+
+  const getImage = async () =>{
+    const reponse = await fetch(url);
+    const data = await reponse.json();
+    setImage(data);
+  }
+  
+  const postImage = async event =>{
+    event.preventDefault();
+
+    setImage(document.getElementById("image").files[0]);
+
+    const form = new FormData();
+    form.append('file',document.getElementById("image").files[0]);
+
+    const post = await fetch(url, {
+      method: 'POST',
+      body: form
+    });
+  }
+
+  useEffect(() =>{
+    getImage();
+  },[]);
+
+  console.log(image)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form onSubmit={postImage} encType="multipart/form-data">
+        <input type="file" accept="image/png, image/jpeg" id="image"></input>
+        <button>Confirm</button>
+      </form>
+      <div className='images'>
+        {
+          image.map((data) =>(
+            <Image data={data}></Image>
+          ))
+        }
+      </div>
     </div>
   );
 }
