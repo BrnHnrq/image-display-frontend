@@ -28,19 +28,21 @@ const App = () => {
       method: 'POST',
       body: form
     });
-  }
 
+    window.location.reload(true);
+  }
+  
   useEffect(() =>{
     getImage();
   },[]);
 
-  console.log(image)
-
   return (
     <div className="App">
       <form onSubmit={postImage} encType="multipart/form-data">
-        <input type="file" accept="image/png, image/jpeg" id="image"></input>
-        <button>Confirm</button>
+        <div className='input-div'>
+          <input type="file" accept="image/png, image/jpeg" id="image"></input>
+          <button>Confirm</button>
+        </div>
       </form>
       <div className='images'>
         {

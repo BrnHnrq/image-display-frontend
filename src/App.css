@@ -10,3 +10,15 @@ body{
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
+
+.input-div{
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  background-color: rgba(6, 168, 93, 0.8);
+  bottom: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  left: 40%;
+  gap: 50px;
+}
