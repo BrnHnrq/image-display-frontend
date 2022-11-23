@@ -1,4 +1,7 @@
 .image-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     max-width: 400px;
 }
 
@@ -6,11 +9,16 @@
     width: 100%;
 }
 
+.image:hover{
+    max-width: 450px;
+    border: 5px solid rgb(68, 235, 137);
+    cursor: pointer;
+}
+
 .header-div{
     display: flex;
-    justify-content: space-between;
-    background-color: rgba(6, 168, 93, 0.8);
-    padding: 5px 8px 5px 8px;
-    cursor: pointer;
-    text-align: center;
+    justify-content: space-between  ;
+    gap: 200px;
+    background-color: rgba(6, 168, 93);
+    padding: 5px 12px 5px 8px;
 }

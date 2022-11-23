@@ -37,13 +37,16 @@ const App = () => {
   },[]);
 
   return (
-    <div className="App">
+    <div>
+      
+      
       <form onSubmit={postImage} encType="multipart/form-data">
         <div className='input-div'>
           <input type="file" accept="image/png, image/jpeg" id="image"></input>
           <button>Confirm</button>
         </div>
       </form>
+
       <div className='images'>
         {
           image.map((data) =>(

@@ -14,11 +14,14 @@ const Image = ({data}) =>{
         
         window.location.reload(true)
     }
-
+    let retrivedDate = data.date
+    let milDate = Date.parse(retrivedDate);
+    let convertedDate = new Date(milDate)
+ 
     return(
-        <div className="image-div" key={data.id}>
+        <div className="image-div" key={data.id}>   
             <div className="header-div">
-                <p>{data.date}</p>
+                <p>{convertedDate.toLocaleString()}</p>
                 <button onClick={() => deleteImage()}>Delete</button>
             </div>
             <img className="image" src={process.env.PUBLIC_URL + '/image/' + data.fileName} alt={data.fileName}/>
